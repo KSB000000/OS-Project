@@ -2,8 +2,9 @@
 #include <pthread.h>
 #include <semaphore.h>
 #define NUM 5
-sem_t forks[NUM]; // forks
+sem_t forks[NUM];
 sem_t once;
+
 void pickup(int philosopher_num){
 sem_wait(&forks[philosopher_num % NUM]);
 }
