@@ -8,5 +8,6 @@ MAX = 30 이면 lock을 걸고
 
 그렇게 0~30 사이를 반복하며 출력하게 된다.
 
+![image](https://github.com/user-attachments/assets/cee95d25-cf65-4ac8-9dcb-b7f87ccb04ed)
 
 <img width="697" alt="PD" src="https://github.com/user-attachments/assets/0e1811e7-5027-4caf-8584-f5e0e6ddd1ab" />
