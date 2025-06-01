@@ -1,6 +1,7 @@
 #Reader Preference
 
-void* reader(void* arg) {
+void* reader(void* arg) 
+{
     int id = *(int*)arg;
     while (1) {
         sem_wait(&x);
@@ -24,7 +25,8 @@ return NULL;
 먼저 x로 readercount 보호하고 reader가 1이 되었을 대부터 이제 reader가 모두 끝날 때 까지 write는 참여할 수 없게 sem_wait(wsem)을 한다. 그렇게 되면 Reader가 우선순위로 먼저 끝나게 되고 Writer는 Reader가 끝난 후에 참여할 수 있게 된다. 
 
 
-void* writer(void* arg) {
+void* writer(void* arg) 
+{
     int id = *(int*)arg;
     while (1) {
         sem_wait(&wsem);
