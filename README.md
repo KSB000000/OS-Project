@@ -96,3 +96,6 @@ void* writer(void* arg) {
 }
 
 <img width="697" alt="W_prefer" src="https://github.com/user-attachments/assets/2efd4cf4-edfc-45e6-94ac-f72c63f02190" />
+
+
+sem 변수를 생성하고 순서를 지정해 줌으로써 우선순위를 쉽게 정해줄 수 있는 것이 인상적이다.
