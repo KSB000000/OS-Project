@@ -35,8 +35,6 @@ void* reader(void* arg) {
         if (readcount == 0)
             sem_post(&wsem); 
         sem_post(&x);
-
-        usleep(rand() % 1000000);
     }
     return NULL;
 }
