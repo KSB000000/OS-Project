@@ -1,4 +1,4 @@
-생산자 소비자 문제
+# Producer Consumer Problem
 
 MAX = 30 이면 lock을 걸고
 
@@ -7,8 +7,12 @@ MAX = 30 이면 lock을 걸고
 그리고 소비자는 0이 되면 x가 -가 되지 않게 spin lock을 걸어 놓는다.
 
 그렇게 0~30 사이를 반복하며 출력하게 된다.
-
-       pthread_mutex_lock(&mutex);
+```c
+void *thread_increment(void *arg)
+{
+    for (int i = 0; i < ITER; i++)
+    {
+        pthread_mutex_lock(&mutex);
 
         while (x == MAX)
             pthread_cond_wait(&cond_full, &mutex);
@@ -19,9 +23,16 @@ MAX = 30 이면 lock을 걸고
 
         pthread_cond_signal(&cond_empty);
         pthread_mutex_unlock(&mutex);
-
+    }
+    pthread_exit(NULL);
+}
+```
 x에 접근 하기 전에 pthread_mutex_lock(&mutex)를 하여 상호배제 활성화 그리고 끝나면 unlock
-
+```c
+void *thread_decrement(void *arg)
+{
+    for (int i = 0; i < ITER; i++)
+    {
         pthread_mutex_lock(&mutex);
 
 
@@ -33,6 +44,10 @@ x에 접근 하기 전에 pthread_mutex_lock(&mutex)를 하여 상호배제 활�
 
         pthread_cond_signal(&cond_full);
         pthread_mutex_unlock(&mutex);
+    }
+    pthread_exit(NULL);
+}
+```
 
 소비자의 경우도 위와 동일
 
